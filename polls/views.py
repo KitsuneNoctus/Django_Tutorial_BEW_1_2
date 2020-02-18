@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.views import generic
 
 from .models import Choice, Question
+from .forms import FriendlyForm
 
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
@@ -39,6 +40,14 @@ def vote(request, question_id):
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
     # return Question.objects.order_by('-pub_date')[:5]
+
+# Demo of forms for Django
+def form_demo(request):
+    form = FriendlyForm()
+
+    context = { 'form': form }
+    return render(request,'polls/form_demo.html',context)
+
 
 # def index(request):
 #     latest_question_list = Question.objects.order_by('-pub_date')[:5]

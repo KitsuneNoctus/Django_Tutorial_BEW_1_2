@@ -9,4 +9,5 @@ urlpatterns = [
     path('<int:pk>/results/', views.ResultsView.as_view(), name='results'),
     path('<int:question_id>/vote/', views.vote, name='vote'),
     path('form/', views.form_demo, name='form-demo'), #polls/forms
+    path('new/',views.QuestionCreateView.as_view(),name='new'),
 ]

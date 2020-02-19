@@ -1,10 +1,12 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views import generic
 
 from .models import Choice, Question
-from .forms import FriendlyForm
+from .forms import FriendlyForm, QuestionCreateForm
+
+from django.views.generic.edit import CreateView
 
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
@@ -41,12 +43,26 @@ def vote(request, question_id):
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
     # return Question.objects.order_by('-pub_date')[:5]
 
-# Demo of forms for Django
+# Demo of forms for Django =======================
 def form_demo(request):
+
     form = FriendlyForm()
 
     context = { 'form': form }
     return render(request,'polls/form_demo.html',context)
+
+class QuestionCreateView(CreateView):
+  def get(self, request, *args, **kwargs):
+      context = {'form': QuestionCreateForm()}
+      return render(request, 'polls/new.html', context)
+
+  def post(self, request, *args, **kwargs):
+      form = QuestionCreateForm(request.POST)
+      if form.is_valid():
+          question = form.save()
+          #How it knows to re-route to the new detail page
+          return HttpResponseRedirect(reverse_lazy('polls:detail', args=[question.id]))
+      return render(request, 'polls/new.html', {'form': form})
 
 
 # def index(request):

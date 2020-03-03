@@ -24,6 +24,7 @@ SECRET_KEY = 'grion+@s(s(=z()&(0(1q@_!8bn6_1%^98&2u_2zy(9xl$dule'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+ALLOWED_HOSTS = ['localhost', 'uniqueprojectname.herokuapp.com']
 
 ALLOWED_HOSTS = []
 
@@ -124,3 +125,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+STATIC_ROOT = os.path.join(BASE_DIR, ‘static’)

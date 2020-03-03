@@ -24,7 +24,7 @@ SECRET_KEY = 'grion+@s(s(=z()&(0(1q@_!8bn6_1%^98&2u_2zy(9xl$dule'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['localhost', 'uniqueprojectname.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'polls-app-hc.herokuapp.com']
 
 ALLOWED_HOSTS = []
 
@@ -126,4 +126,4 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, ‘static’)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

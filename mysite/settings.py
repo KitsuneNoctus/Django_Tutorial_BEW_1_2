@@ -26,8 +26,6 @@ SECRET_KEY = 'grion+@s(s(=z()&(0(1q@_!8bn6_1%^98&2u_2zy(9xl$dule'
 DEBUG = True
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'polls-app-hc.herokuapp.com']
 
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
